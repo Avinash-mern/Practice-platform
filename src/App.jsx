@@ -6,6 +6,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 export default function App() {
   const [showChatbot, setShowChatbot] = useState(false);
   const [messages, setMessages] = useState([]);
+  const [email, setEmail] = useState("");
 
   // Auto messages when chatbot opens
   useEffect(() => {
@@ -20,19 +21,57 @@ export default function App() {
     }
   }, [showChatbot]);
 
+  const handleSubscribe = () => {
+    if(email.trim()) {
+      alert(`Thanks for subscribing with ${email}!`);
+      setEmail("");
+    }
+  };
+
   return (
     <div className="d-flex flex-column min-vh-100 bg-dark text-light">
-      {/* Header */}
-      <header className="navbar navbar-dark bg-black shadow p-3">
-        <a href="codeprep.in" className="navbar-brand fw-bold fs-3">CodePrep Academy</a>
-        <div>
-          <button className="btn btn-outline-light me-2">Login</button>
-          <button className="btn btn-primary">Signup</button>
+      {/* Navbar */}
+      <nav className="navbar navbar-expand-lg navbar-dark bg-black shadow p-3">
+        <div className="container-fluid">
+          <a className="navbar-brand fw-bold fs-3" href="/">CodePrep Academy</a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a className="nav-link" href="#">Products</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">Solutions</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">Resources</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">About</a>
+              </li>
+              <li className="nav-item">
+                <button className="btn btn-outline-light me-2">Login</button>
+              </li>
+              <li className="nav-item">
+                <button className="btn btn-primary">Signup</button>
+              </li>
+            </ul>
+          </div>
         </div>
-      </header>
+      </nav>
 
       {/* Main Content */}
-      <main className="flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center px-3">
+      <main className="flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center px-3 py-5">
         <motion.h2
           className="display-4 fw-bold mb-4"
           initial={{ opacity: 0, y: -50 }}
@@ -61,15 +100,6 @@ export default function App() {
           <span className="text-danger fw-bold">hackathons</span>.
         </motion.p>
 
-        {/* <motion.h3
-          className="fw-bold text-warning mb-3"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-        >
-          CodePrep – <span className="text-info">जहाँ कोडर्स बनते हैं चैंपियन।</span>
-        </motion.h3> */}
-
         <motion.p
           className="fs-5 text-light fst-italic"
           initial={{ opacity: 0 }}
@@ -80,98 +110,109 @@ export default function App() {
         </motion.p>
       </main>
 
-{/* Footer */}
-<footer className="bg-black text-light pt-5 pb-3 mt-5">
-  <div className="container">
-    <div className="row">
-      {/* Products */}
-      <div className="col-6 col-md-2 mb-4">
-        <h6 className="fw-bold text-uppercase">Products</h6>
-        <ul className="list-unstyled small">
-          <li><a href="#" className="text-secondary text-decoration-none">Screen</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Interview</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Engage</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">SkillUp</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Certified assessments</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Plagiarism detection</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Real-world questions</a></li>
-        </ul>
-      </div>
+      {/* Footer */}
+      <footer className="bg-black text-light pt-5 pb-3 mt-5">
+        <div className="container">
+          <div className="row">
+            {/* Products */}
+            <div className="col-6 col-md-2 mb-4">
+              <h6 className="fw-bold text-uppercase">Products</h6>
+              <ul className="list-unstyled small">
+                <li><a href="#" className="text-secondary text-decoration-none">Screen</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Interview</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Engage</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">SkillUp</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Certified assessments</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Plagiarism detection</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Real-world questions</a></li>
+              </ul>
+            </div>
 
-      {/* Solutions */}
-      <div className="col-6 col-md-3 mb-4">
-        <h6 className="fw-bold text-uppercase">Solutions</h6>
-        <ul className="list-unstyled small">
-          <li><a href="#" className="text-secondary text-decoration-none">Set up your skills strategy</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Showcase your tech brand</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Optimize your hiring process</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Mobilize your internal talent</a></li>
-        </ul>
-      </div>
+            {/* Solutions */}
+            <div className="col-6 col-md-3 mb-4">
+              <h6 className="fw-bold text-uppercase">Solutions</h6>
+              <ul className="list-unstyled small">
+                <li><a href="#" className="text-secondary text-decoration-none">Set up your skills strategy</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Showcase your tech brand</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Optimize your hiring process</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Mobilize your internal talent</a></li>
+              </ul>
+            </div>
 
-      {/* Resources */}
-      <div className="col-6 col-md-2 mb-4">
-        <h6 className="fw-bold text-uppercase">Resources</h6>
-        <ul className="list-unstyled small">
-          <li><a href="#" className="text-secondary text-decoration-none">Blog</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Customer stories</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Roles directory</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Partners</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Integrations</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">What's new</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Writing</a></li>
-        </ul>
-      </div>
+            {/* Resources */}
+            <div className="col-6 col-md-2 mb-4">
+              <h6 className="fw-bold text-uppercase">Resources</h6>
+              <ul className="list-unstyled small">
+                <li><a href="#" className="text-secondary text-decoration-none">Blog</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Customer stories</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Roles directory</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Partners</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Integrations</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">What's new</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Writing</a></li>
+              </ul>
+            </div>
 
-      {/* About */}
-      <div className="col-6 col-md-2 mb-4">
-        <h6 className="fw-bold text-uppercase">About us</h6>
-        <ul className="list-unstyled small">
-          <li><a href="#" className="text-secondary text-decoration-none">Careers</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Status</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Trust</a></li>
-        </ul>
-      </div>
+            {/* About */}
+            <div className="col-6 col-md-2 mb-4">
+              <h6 className="fw-bold text-uppercase">About us</h6>
+              <ul className="list-unstyled small">
+                <li><a href="#" className="text-secondary text-decoration-none">Careers</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Status</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Trust</a></li>
+              </ul>
+            </div>
 
-      {/* Support */}
-      <div className="col-6 col-md-3 mb-4">
-        <h6 className="fw-bold text-uppercase">Support</h6>
-        <ul className="list-unstyled small">
-          <li><a href="#" className="text-secondary text-decoration-none">Get started</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Pricing</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Free Trial</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Request a demo</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">Product support</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">For developers</a></li>
-          <li><a href="#" className="text-secondary text-decoration-none">HI</a></li>
-        </ul>
-      </div>
-    </div>
+            {/* Support + Newsletter */}
+            <div className="col-6 col-md-3 mb-4">
+              <h6 className="fw-bold text-uppercase">Support</h6>
+              <ul className="list-unstyled small mb-3">
+                <li><a href="#" className="text-secondary text-decoration-none">Get started</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Pricing</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Free Trial</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Request a demo</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">Product support</a></li>
+                <li><a href="#" className="text-secondary text-decoration-none">For developers</a></li>
+              </ul>
+              <div>
+                <label className="form-label small text-light">Subscribe to our newsletter</label>
+                <div className="d-flex">
+                  <input
+                    type="email"
+                    className="form-control form-control-sm me-2"
+                    placeholder="Your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <button className="btn btn-primary btn-sm" onClick={handleSubscribe}>Subscribe</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <hr className="border-secondary" />
+          <hr className="border-secondary" />
 
-    {/* Bottom row */}
-    <div className="d-flex flex-column flex-md-row justify-content-between align-items-center small text-secondary">
-      <p className="mb-2 mb-md-0">
-        © {new Date().getFullYear()} CodePrep Academy. All Rights Reserved.
-      </p>
+          {/* Bottom row */}
+          <div className="d-flex flex-column flex-md-row justify-content-between align-items-center small text-secondary">
+            <p className="mb-2 mb-md-0">
+              © {new Date().getFullYear()} CodePrep Academy. All Rights Reserved.
+            </p>
 
-      {/* Social icons */}
-      <div className="d-flex gap-3">
-        <a href="https://linkedin.com" target="_blank" className="text-secondary fs-5"><i className="bi bi-linkedin"></i></a>
-        <a href="https://github.com" target="_blank" className="text-secondary fs-5"><i className="bi bi-github"></i></a>
-        <a href="https://twitter.com" target="_blank" className="text-secondary fs-5"><i className="bi bi-twitter"></i></a>
-        <a href="https://youtube.com" target="_blank" className="text-secondary fs-5"><i className="bi bi-youtube"></i></a>
-      </div>
+            {/* Social icons */}
+            <div className="d-flex gap-3 mb-2 mb-md-0">
+              <a href="https://linkedin.com" target="_blank" className="text-secondary fs-5"><i className="bi bi-linkedin"></i></a>
+              <a href="https://github.com" target="_blank" className="text-secondary fs-5"><i className="bi bi-github"></i></a>
+              <a href="https://twitter.com" target="_blank" className="text-secondary fs-5"><i className="bi bi-twitter"></i></a>
+              <a href="https://youtube.com" target="_blank" className="text-secondary fs-5"><i className="bi bi-youtube"></i></a>
+            </div>
 
-      <div className="mt-2 mt-md-0">
-        <a href="/privacy" className="text-secondary text-decoration-none me-3">Privacy Policy</a>
-        <a href="/terms" className="text-secondary text-decoration-none">Terms of Service</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
+            <div>
+              <a href="/privacy" className="text-secondary text-decoration-none me-3">Privacy Policy</a>
+              <a href="/terms" className="text-secondary text-decoration-none">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </footer>
 
       {/* Floating Buttons (bottom-right) */}
       <div
