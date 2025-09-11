@@ -135,8 +135,7 @@ export default function App() {
   <div className="container text-center">
     <h5 className="text-secondary fw-bold mb-4">Trusted by top companies</h5>
     <motion.div
-      className="row justify-content-center align-items-center g-4"
-      // initial="hidden"
+      className="row justify-content-center align-items-center g-1" // ↓ smaller gap
       animate="visible"
       variants={{
         visible: { transition: { staggerChildren: 0.15 } },
@@ -145,19 +144,20 @@ export default function App() {
       {brands.map((brand, index) => (
         <motion.div
           key={index}
-          className="col-4 col-md-2 d-flex justify-content-center align-items-center"
+          className="col-4 col-md-2 d-flex justify-content-center align-items-center mb-5" 
+          // mb-3 = reduces vertical spacing between rows
           variants={{
             hidden: { opacity: 0, scale: 0.8 },
             visible: { opacity: 1, scale: 1 },
           }}
           animate={{
-            y: [0, -3, 0], // floating up & down
+            y: [0, -3, 0],
           }}
           transition={{
-            duration: 1, // slow gentle float
+            duration: 1,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: index * 0.1, // stagger float timings
+            delay: index * 0.1,
           }}
           whileHover={{ scale: 1.05, rotate: 5 }}
         >
@@ -166,7 +166,7 @@ export default function App() {
             alt={brand.name}
             className="img-fluid"
             style={{
-              maxHeight: "30px",
+              maxHeight: "25px",
               filter: "brightness(0) invert(1)",
             }}
           />
@@ -175,6 +175,7 @@ export default function App() {
     </motion.div>
   </div>
 </section>
+
 
 
 
