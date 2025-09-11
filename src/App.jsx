@@ -2,7 +2,17 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-
+import airbnbLogo from "./assets/logos/airbnbnew.svg";
+import linkedinLogo from "./assets/logos/linkedinnew.svg";
+import stripelogo from "./assets/logos/stripenew.svg";
+import atlassianlogo from './assets/logos/atlassiannew.svg'
+import ibmlogo from './assets/logos/ibmnew.svg';
+import snapinc from "./assets/logos/snapincnew.svg"
+import door from './assets/logos/doordashnew.svg'
+import adobe from './assets/logos/adobenew.svg'
+import paypal from './assets/logos/paypalnew.svg'
+import golman from './assets/logos/golmannew.svg'
+import canva from './assets/logos/canvanew.svg'
 export default function App() {
   const [showChatbot, setShowChatbot] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -29,17 +39,17 @@ export default function App() {
   };
 
   const brands = [
-    { name: "Airbnb", src: "/logos/airbnb.png" },
-    { name: "Stripe", src: "/logos/stripe.png" },
-    { name: "LinkedIn", src: "/logos/linkedin.png" },
-    { name: "Atlassian", src: "/logos/atlassian.png" },
-    { name: "IBM", src: "/logos/ibm.png" },
-    { name: "Snap Inc.", src: "/logos/snap.png" },
-    { name: "DoorDash", src: "/logos/doordash.png" },
-    { name: "Adobe", src: "/logos/adobe.png" },
-    { name: "Paypal", src: "/logos/paypal.png" },
-    { name: "Goldman Sachs", src: "/logos/goldman.png" },
-    { name: "Canvai", src: "/logos/canvai.png" },
+    { name: "Airbnb", src: airbnbLogo },
+    { name: "Stripe", src: stripelogo },
+    { name: "LinkedIn", src:  linkedinLogo},
+    { name: "Atlassian", src: atlassianlogo },
+    { name: "IBM", src: ibmlogo },
+    { name: "Snap Inc.", src: snapinc },
+    { name: "DoorDash", src: door },
+    { name: "Adobe", src: adobe},
+    { name: "Paypal", src: paypal },
+    { name: "Goldman Sachs", src: golman },
+    { name: "Canvai", src: canva },
   ];
 
   return (
@@ -47,8 +57,7 @@ export default function App() {
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-black shadow p-3">
         <div className="container-fluid">
-          <a className="navbar-brand fw-bold fs-3" href="/">Upskill the next
-          generation developer</a>
+          <a className="navbar-brand fw-bold fs-3" href="/">Codeprep Academy</a>
           <button
             className="navbar-toggler"
             type="button"
@@ -79,14 +88,28 @@ export default function App() {
 
       {/* Main Content */}
       <main className="flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center px-3 py-5">
-        <motion.h2
-          className="display-4 fw-bold mb-4"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          🚀 CodePrep Academy
-        </motion.h2>
+      <motion.h2
+  className="display-4 fw-bold mb-4"
+  initial="hidden"
+  animate="visible"
+  variants={{
+    visible: { transition: { staggerChildren: 0.15 } },
+  }}
+>
+  {"Become the next generation developer".split(" ").map((word, i) => (
+    <motion.span
+      key={i}
+      className="d-inline-block me-2"
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      {word}
+    </motion.span>
+  ))}
+</motion.h2>
 
         <motion.p
           className="fs-4 text-secondary mb-4"
