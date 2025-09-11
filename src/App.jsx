@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { ReactTyped } from "react-typed";
+
 import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -18,6 +20,16 @@ export default function App() {
   const [messages, setMessages] = useState([]);
   const [email, setEmail] = useState("");
 
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @import url("https://fonts.cdnfonts.com/css/satoshi");
+      body, * {
+        font-family: "Satoshi", Verdana, sans-serif !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }, []);
   // Auto messages when chatbot opens
   useEffect(() => {
     if (showChatbot) {
@@ -57,7 +69,7 @@ export default function App() {
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-black shadow p-3">
         <div className="container-fluid">
-          <a className="navbar-brand fw-bold fs-3" href="/">Codeprep Academy</a>
+          <a className="navbar-brand fs-3" href="/">Codeprep Academy</a>
           <button
             className="navbar-toggler"
             type="button"
@@ -86,78 +98,85 @@ export default function App() {
         </div>
       </nav>
 
-      {/* Main Content */}
-      <main className="flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center px-3 py-5">
-      <motion.h2
-  className="display-4 fw-bold mb-4"
-  initial="hidden"
-  animate="visible"
-  variants={{
-    visible: { transition: { staggerChildren: 0.15 } },
-  }}
->
-  {"Become the next generation developer".split(" ").map((word, i) => (
-    <motion.span
-      key={i}
-      className="d-inline-block me-2"
+  <main className="flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center px-3 py-5">
+  <h1 
+    className=" mb-3" 
+    style={{
+      fontSize: "clamp(2rem, 6vw, 5rem)",  // min 2rem, fluid with screen, max 5rem
+      lineHeight: "1.2"
+    }}
+  >
+    <span className="text-primary">
+      <ReactTyped
+        strings={["Become", "Upskill"]}
+        typeSpeed={120}
+        backSpeed={80}
+        backDelay={2000}
+        loop
+      />
+    </span>{" "}
+    the next
+  </h1>
+
+  <h2 
+    className="fw-light" 
+    style={{
+      fontSize: "clamp(1.5rem, 4vw, 3rem)", // min 1.5rem, fluid, max 3rem
+      lineHeight: "1.2"
+    }}
+  >
+    generation developer
+  </h2>
+</main>
+
+
+{/* Trusted Brands Section */}
+<section className="bg-dark text-light py-5">
+  <div className="container text-center">
+    <h5 className="text-secondary fw-bold mb-4">Trusted by top companies</h5>
+    <motion.div
+      className="row justify-content-center align-items-center g-4"
+      // initial="hidden"
+      animate="visible"
       variants={{
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0 },
+        visible: { transition: { staggerChildren: 0.15 } },
       }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      {word}
-    </motion.span>
-  ))}
-</motion.h2>
-
-        <motion.p
-          className="fs-4 text-secondary mb-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1.5 }}
+      {brands.map((brand, index) => (
+        <motion.div
+          key={index}
+          className="col-4 col-md-2 d-flex justify-content-center align-items-center"
+          variants={{
+            hidden: { opacity: 0, scale: 0.8 },
+            visible: { opacity: 1, scale: 1 },
+          }}
+          animate={{
+            y: [0, -3, 0], // floating up & down
+          }}
+          transition={{
+            duration: 1, // slow gentle float
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: index * 0.1, // stagger float timings
+          }}
+          whileHover={{ scale: 1.05, rotate: 5 }}
         >
-          is{" "}
-          <motion.span
-            className="text-info fw-bold"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-          >
-            launching soon
-          </motion.span>{" "}
-          their own platform for{" "}
-          <span className="text-warning fw-bold">coding challenges</span> and{" "}
-          <span className="text-danger fw-bold">hackathons</span>.
-        </motion.p>
+          <img
+            src={brand.src}
+            alt={brand.name}
+            className="img-fluid"
+            style={{
+              maxHeight: "30px",
+              filter: "brightness(0) invert(1)",
+            }}
+          />
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</section>
 
-        <motion.p
-          className="fs-5 text-light fst-italic"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 3, duration: 1 }}
-        >
-          ⭐ Stay tuned… we will be <span className="text-success fw-bold">launching soon!</span>
-        </motion.p>
-      </main>
 
-      {/* Trusted Brands Section */}
-      <section className="bg-dark text-light py-5">
-        <div className="container text-center">
-          <h5 className="text-secondary fw-bold mb-4">Trusted by top companies</h5>
-          <div className="row justify-content-center align-items-center g-4">
-            {brands.map((brand, index) => (
-              <div key={index} className="col-4 col-md-2 d-flex justify-content-center align-items-center">
-                <img
-                  src={brand.src}
-                  alt={brand.name}
-                  className="img-fluid"
-                  style={{ maxHeight: "50px", filter: "brightness(0) invert(1)" }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="bg-black text-light pt-5 pb-3 mt-5">
