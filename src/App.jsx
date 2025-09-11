@@ -28,12 +28,27 @@ export default function App() {
     }
   };
 
+  const brands = [
+    { name: "Airbnb", src: "/logos/airbnb.png" },
+    { name: "Stripe", src: "/logos/stripe.png" },
+    { name: "LinkedIn", src: "/logos/linkedin.png" },
+    { name: "Atlassian", src: "/logos/atlassian.png" },
+    { name: "IBM", src: "/logos/ibm.png" },
+    { name: "Snap Inc.", src: "/logos/snap.png" },
+    { name: "DoorDash", src: "/logos/doordash.png" },
+    { name: "Adobe", src: "/logos/adobe.png" },
+    { name: "Paypal", src: "/logos/paypal.png" },
+    { name: "Goldman Sachs", src: "/logos/goldman.png" },
+    { name: "Canvai", src: "/logos/canvai.png" },
+  ];
+
   return (
     <div className="d-flex flex-column min-vh-100 bg-dark text-light">
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-black shadow p-3">
         <div className="container-fluid">
-          <a className="navbar-brand fw-bold fs-3" href="/">CodePrep Academy</a>
+          <a className="navbar-brand fw-bold fs-3" href="/">Upskill the next
+          generation developer</a>
           <button
             className="navbar-toggler"
             type="button"
@@ -47,18 +62,10 @@ export default function App() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link" href="#">Products</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Solutions</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Resources</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">About</a>
-              </li>
+              <li className="nav-item"><a className="nav-link" href="#">Products</a></li>
+              <li className="nav-item"><a className="nav-link" href="#">Solutions</a></li>
+              <li className="nav-item"><a className="nav-link" href="#">Resources</a></li>
+              <li className="nav-item"><a className="nav-link" href="#">About</a></li>
               <li className="nav-item">
                 <button className="btn btn-outline-light me-2">Login</button>
               </li>
@@ -109,6 +116,25 @@ export default function App() {
           ⭐ Stay tuned… we will be <span className="text-success fw-bold">launching soon!</span>
         </motion.p>
       </main>
+
+      {/* Trusted Brands Section */}
+      <section className="bg-dark text-light py-5">
+        <div className="container text-center">
+          <h5 className="text-secondary fw-bold mb-4">Trusted by top companies</h5>
+          <div className="row justify-content-center align-items-center g-4">
+            {brands.map((brand, index) => (
+              <div key={index} className="col-4 col-md-2 d-flex justify-content-center align-items-center">
+                <img
+                  src={brand.src}
+                  alt={brand.name}
+                  className="img-fluid"
+                  style={{ maxHeight: "50px", filter: "brightness(0) invert(1)" }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="bg-black text-light pt-5 pb-3 mt-5">
@@ -174,42 +200,34 @@ export default function App() {
                 <li><a href="#" className="text-secondary text-decoration-none">Product support</a></li>
                 <li><a href="#" className="text-secondary text-decoration-none">For developers</a></li>
               </ul>
-              <div>
-                <label className="form-label small text-light">Subscribe to our newsletter</label>
-                <div className="d-flex">
-                  <input
-                    type="email"
-                    className="form-control form-control-sm me-2"
-                    placeholder="Your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <button className="btn btn-primary btn-sm" onClick={handleSubscribe}>Subscribe</button>
-                </div>
+
+              <h6 className="fw-bold text-uppercase">Newsletter</h6>
+              <div className="d-flex">
+                <input
+                  type="email"
+                  className="form-control form-control-sm me-2"
+                  placeholder="Your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <button className="btn btn-primary btn-sm" onClick={handleSubscribe}>Subscribe</button>
               </div>
             </div>
           </div>
 
-          <hr className="border-secondary" />
-
-          {/* Bottom row */}
-          <div className="d-flex flex-column flex-md-row justify-content-between align-items-center small text-secondary">
-            <p className="mb-2 mb-md-0">
-              © {new Date().getFullYear()} CodePrep Academy. All Rights Reserved.
-            </p>
-
-            {/* Social icons */}
-            <div className="d-flex gap-3 mb-2 mb-md-0">
-              <a href="https://linkedin.com" target="_blank" className="text-secondary fs-5"><i className="bi bi-linkedin"></i></a>
-              <a href="https://github.com" target="_blank" className="text-secondary fs-5"><i className="bi bi-github"></i></a>
-              <a href="https://twitter.com" target="_blank" className="text-secondary fs-5"><i className="bi bi-twitter"></i></a>
-              <a href="https://youtube.com" target="_blank" className="text-secondary fs-5"><i className="bi bi-youtube"></i></a>
+          {/* Social Icons */}
+          <div className="text-center mt-4">
+            <div className="mb-2">
+              <i className="bi bi-facebook me-2 fs-4 text-secondary"></i>
+              <i className="bi bi-twitter me-2 fs-4 text-secondary"></i>
+              <i className="bi bi-linkedin me-2 fs-4 text-secondary"></i>
+              <i className="bi bi-github fs-4 text-secondary"></i>
             </div>
-
-            <div>
-              <a href="/privacy" className="text-secondary text-decoration-none me-3">Privacy Policy</a>
-              <a href="/terms" className="text-secondary text-decoration-none">Terms of Service</a>
-            </div>
+            <small className="text-secondary">
+              © {new Date().getFullYear()} CodePrep Academy. All Rights Reserved. 
+              <a href="#" className="text-secondary text-decoration-none"> Privacy Policy</a> | 
+              <a href="#" className="text-secondary text-decoration-none"> Terms of Service</a>
+            </small>
           </div>
         </div>
       </footer>
@@ -247,7 +265,7 @@ export default function App() {
 
         {/* WhatsApp */}
         <a
-          href="https://wa.me/+91-7488394698" // replace with your WhatsApp number
+          href="https://wa.me/+91-7488394698"
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-success rounded-circle shadow d-flex align-items-center justify-content-center"
