@@ -98,11 +98,11 @@ export default function App() {
         </div>
       </nav>
 
-  <main className="flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center px-3 py-5">
-  <h1 
-    className=" mb-3" 
+      <main className="flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center px-3 py-5">
+  <h1
+    className="mb-3"
     style={{
-      fontSize: "clamp(2rem, 6vw, 5rem)",  // min 2rem, fluid with screen, max 5rem
+      fontSize: "clamp(2rem, 6vw, 5rem)", 
       lineHeight: "1.2"
     }}
   >
@@ -118,16 +118,31 @@ export default function App() {
     the next
   </h1>
 
-  <h2 
-    className="fw-light" 
+  <h2
+    className="fw-light"
     style={{
-      fontSize: "clamp(1.5rem, 4vw, 3rem)", // min 1.5rem, fluid, max 3rem
-      lineHeight: "1.2"
+      fontSize: "clamp(2rem, 4vw, 3rem)",
+      lineHeight: "1.4",
+      maxWidth: "900px"
     }}
   >
-    generation developer
+    generation developer{" "} <br />
+    <span className="fw-normal text-secondary" style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)" }}>
+      Our platform enables colleges to assess and upskill their students, while also
+      providing individual learners with the tools they need to build strong foundations
+      for a successful career in software development.
+    </span>
   </h2>
+  <div className="mt-4 d-flex gap-3 flex-wrap justify-content-center">
+    <button className="btn btn-primary px-4 py-2 fs-5 ">
+      For Colleges
+    </button>
+    <button className="btn btn-outline-light px-4 py-2 fs-5 ">
+      For Developers
+    </button>
+  </div>
 </main>
+
 
 
 {/* Trusted Brands Section */}
