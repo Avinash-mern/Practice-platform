@@ -1,0 +1,31 @@
+/* Only show dropdown on hover for large screens (desktop) */
+@media (min-width: 992px) {
+    /* when li.dropdown is hovered, show the menu */
+    .navbar .dropdown:hover > .dropdown-menu {
+      display: block;
+      margin-top: 0; /* remove the small gap bootstrap adds */
+    }
+  
+    /* keep Bootstrap's positioning & animation */
+    .navbar .dropdown-menu {
+      transition: opacity 120ms ease, transform 120ms ease;
+    }
+  }
+  
+  /* Small tweak: make dropdown full-width within collapsed mobile menu for better tap targets */
+  @media (max-width: 991.98px) {
+    .navbar .dropdown-menu {
+      position: static;
+      float: none;
+      background-clip: padding-box;
+      width: 100%;
+      border: none;
+      box-shadow: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .navbar .dropdown-item {
+      padding-left: 1.25rem;
+    }
+  }
+  

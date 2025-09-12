@@ -11,6 +11,7 @@ import FloatingButtons from "./components/FloatingButtons";
 // Pages
 import Colleges from "./pages/Colleges";
 import Developers from "./pages/Developers";
+import Courses from "./pages/Courses";
 
 // logos
 import airbnbLogo from "./assets/logos/airbnbnew.svg";
@@ -94,6 +95,7 @@ export default function App() {
           {/* Dedicated Pages */}
           <Route path="/colleges" element={<Colleges />} />
           <Route path="/developers" element={<Developers />} />
+          <Route path="/courses" element={<Courses />} />
         </Routes>
 
         <Footer
